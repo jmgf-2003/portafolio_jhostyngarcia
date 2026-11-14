@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Píxel Mágico - Jhostyn García</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-card {
+            position: relative;
+            background: #0d0f17;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(16, 185, 129, 0.2),
+                transparent 40%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .glow-card-border {
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 1px;
+            background: radial-gradient(
+                400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(16, 185, 129, 0.8),
+                transparent 40%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-[#08090d] text-slate-100 font-sans antialiased selection:bg-brandGreen selection:text-black leading-relaxed">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 w-full bg-[#08090d]/90 backdrop-blur-md z-50 border-b border-slate-900">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold tracking-wider text-white">
+                Jhostyn<span class="text-brandGreen">García</span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-10 text-sm font-light text-slate-300">
+                <a href="#galeria" class="hover:text-brandGreen transition-colors">Trabajos</a>
+                <a href="#investigacion" class="hover:text-brandGreen transition-colors">Proyecto</a>
+                <a href="index.html#projects" class="text-brandGreen hover:underline transition-colors">&larr; Volver al Portafolio</a>
+            </nav>
+
+            <a href="index.html#projects" class="md:hidden text-brandGreen text-sm font-medium">
+                &larr; Volver
+            </a>
+        </div>
+    </header>
+
+    <!-- HEADER DEL PROYECTO -->
+    <section class="pt-32 pb-16 px-6 border-b border-slate-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900/40 via-[#08090d] to-[#08090d]">
+        <div class="max-w-5xl mx-auto space-y-4">
+            <span class="text-xs text-brandGreen font-semibold uppercase tracking-widest bg-brandGreen/10 px-3 py-1 rounded-full border border-brandGreen/20">
+                E-commerce / Diseño & Personalización
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-bold text-white tracking-tight">
+                Píxel Mágico
+            </h1>
+            <p class="text-slate-400 text-base sm:text-lg font-light max-w-2xl">
+                Plataforma digital y estrategia comercial especializada en impresión personalizada, sublimación, estampado DTF y diseño gráfico publicitario.
+            </p>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE TRABAJOS REALIZADOS -->
+    <section id="galeria" class="py-20 px-6 border-b border-slate-900/60 bg-[#06070a]">
+        <div class="max-w-5xl mx-auto space-y-10">
+            <div class="space-y-2">
+                <span class="text-xs text-brandGreen font-semibold uppercase tracking-wider">Catálogo Visual</span>
+                <h2 class="text-3xl font-bold text-white">Muestra de Trabajos Realizados</h2>
+                <p class="text-slate-400 text-sm font-light">
+                    Ejemplos de acabados en textil, artículos promocionales y producción gráfica personalizada.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Muestra 1: Estampado Textil / DTF -->
+                <div class="glow-card border border-slate-800/80 group flex flex-col">
+                    <div class="glow-card-border"></div>
+                    <div class="relative h-56 overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=800&q=80" alt="Estampado de Franelas Personalizadas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100">
+                        <span class="absolute top-3 left-3 bg-[#08090d]/85 backdrop-blur-sm text-brandGreen text-[11px] font-medium px-2.5 py-1 rounded border border-brandGreen/30">
+                            Estampado Textil & DTF
+                        </span>
+                    </div>
+                    <div class="p-5 relative z-10 space-y-1.5">
+                        <h3 class="text-lg font-bold text-white group-hover:text-brandGreen transition-colors">Franelas Personalizadas</h3>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed">
+                            Impresión de alta durabilidad y colores vibrantes sobre algodón y poliéster para marcas, eventos y uso diario.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Muestra 2: Sublimación en Tazas y Termos -->
+                <div class="glow-card border border-slate-800/80 group flex flex-col">
+                    <div class="glow-card-border"></div>
+                    <div class="relative h-56 overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80" alt="Sublimación de Tazas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100">
+                        <span class="absolute top-3 left-3 bg-[#08090d]/85 backdrop-blur-sm text-brandGreen text-[11px] font-medium px-2.5 py-1 rounded border border-brandGreen/30">
+                            Sublimación
+                        </span>
+                    </div>
+                    <div class="p-5 relative z-10 space-y-1.5">
+                        <h3 class="text-lg font-bold text-white group-hover:text-brandGreen transition-colors">Tazas y Artículos POP</h3>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed">
+                            Transferencia térmica en cerámica, termos y material corporativo con acabados nítidos resistentes al lavado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Muestra 3: Diseño Gráfico y Papelería -->
+                <div class="glow-card border border-slate-800/80 group flex flex-col">
+                    <div class="glow-card-border"></div>
+                    <div class="relative h-56 overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80" alt="Diseño Gráfico y Etiquetas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100">
+                        <span class="absolute top-3 left-3 bg-[#08090d]/85 backdrop-blur-sm text-brandGreen text-[11px] font-medium px-2.5 py-1 rounded border border-brandGreen/30">
+                            Diseño & Papelería
+                        </span>
+                    </div>
+                    <div class="p-5 relative z-10 space-y-1.5">
+                        <h3 class="text-lg font-bold text-white group-hover:text-brandGreen transition-colors">Identidad y Etiquetas</h3>
+                        <p class="text-xs text-slate-400 font-light leading-relaxed">
+                            Maquetación de empaques, stickers en vinil, cuadernos personalizados y piezas visuales para redes sociales.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-[11px] text-slate-500 text-right italic">
+                
+        </div>
+    </section>
+
+    <!-- CONTENIDO DE LA INVESTIGACIÓN -->
+    <main id="investigacion" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto space-y-12">
+
+            <!-- Planteamiento del Problema -->
+            <article class="glow-card p-8 sm:p-10 border border-slate-800/80">
+                <div class="glow-card-border"></div>
+                <div class="relative z-10 space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="text-brandGreen">01.</span> Planteamiento del Problema
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                        En el sector de la impresión personalizada y el diseño gráfico independiente, la gestión de pedidos a través de canales informales sin un catálogo estructurado ni esquemas claros de precios genera fricción en la atención al cliente. La ausencia de una plataforma digital centralizada dificulta que los usuarios visualicen la variedad de acabados (sublimación, DTF, papelería), calculen presupuestos por combos y concreten compras de forma ágil.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Objetivos de la Investigación -->
+            <article class="glow-card p-8 sm:p-10 border border-slate-800/80">
+                <div class="glow-card-border"></div>
+                <div class="relative z-10 space-y-6">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="text-brandGreen">02.</span> Objetivos de la Investigación
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-[#08090d]/60 p-5 rounded-lg border border-slate-800/80">
+                            <h3 class="text-sm font-bold text-brandGreen uppercase tracking-wider mb-1">Objetivo General</h3>
+                            <p class="text-slate-300 text-sm sm:text-base font-light">
+                                Desarrollar una plataforma web comercial y catálogo interactivo para Píxel Mágico, optimizando la exhibición de productos personalizados, la estructuración de combos promocionales y la conversión de clientes.
+                            </p>
+                        </div>
+
+                        <div class="bg-[#08090d]/60 p-5 rounded-lg border border-slate-800/80 space-y-3">
+                            <h3 class="text-sm font-bold text-brandGreen uppercase tracking-wider">Objetivos Específicos</h3>
+                            <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm sm:text-base font-light">
+                                <li>Analizar las necesidades del público objetivo en productos de sublimación, estampado textil y diseño gráfico.</li>
+                                <li>Estructurar una matriz de costos y paquetes promocionales competitivos adaptados a clientes particulares y emprendedores.</li>
+                                <li>Diseñar una interfaz web responsiva y visualmente atractiva que destaque la calidad gráfica de cada trabajo.</li>
+                                <li>Integrar canales directos de cotización y pedido para agilizar el cierre de ventas digitales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Justificación de la Investigación -->
+            <article class="glow-card p-8 sm:p-10 border border-slate-800/80">
+                <div class="glow-card-border"></div>
+                <div class="relative z-10 space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="text-brandGreen">03.</span> Justificación de la Investigación
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                        El proyecto se justifica comercialmente al dotar al emprendimiento de una identidad digital profesional que eleva la percepción de valor de sus productos frente a la competencia. Desde el punto de vista operativo, reduce el tiempo invertido en responder consultas repetitivas sobre precios y materiales, permitiendo al cliente explorar muestras reales y solicitar cotizaciones precisas de manera inmediata.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Alcance de Investigación -->
+            <article class="glow-card p-8 sm:p-10 border border-slate-800/80">
+                <div class="glow-card-border"></div>
+                <div class="relative z-10 space-y-4">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="text-brandGreen">04.</span> Alcance de Investigación
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                        El alcance abarca el diseño de la arquitectura visual, la curaduría del portafolio de muestras gráficas (textil, sublimación y papelería corporativa) y la implementación de flujos de contacto directo. Está orientado al mercado regional y nacional de pedidos al detal y al mayor, sentando las bases para la futura integración de pasarelas de pago automatizadas.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Botón de Retorno -->
+            <div class="pt-6 text-center">
+                <a href="index.html#projects" class="inline-block px-8 py-4 bg-brandGreen/10 border border-brandGreen text-brandGreen font-medium rounded-lg hover:bg-brandGreen hover:text-black transition-all duration-300">
+                    &larr; Volver al Portafolio Principal
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-slate-900/60 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Jhostyn García. Desarrollador de Software.</p>
+    </footer>
+
+    <!-- SCRIPT EFECTO LUZ EN TARJETAS -->
+    <script>
+        const cards = document.querySelectorAll('.glow-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>
